@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { toast } from "react-toastify";
 import * as messageService from "../../services/messageServices";
+import * as sendMessageServices from "../../services/sendMessageServices";
 
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -28,15 +29,37 @@ class Message extends Validation {
     subject: Joi.string().required().min(5),
     message: Joi.string().required().min(6),
   };
+  onDelete = async (messageToDelete) => {
+    console.log("onDelete", messageToDelete);
+    const actualMessages = this.state.logMessage;
+
+    const filteredMessages = actualMessages.filter(
+      (message) => message._id !== messageToDelete._id
+    );
+
+    this.setState({ logMessage: filteredMessages });
+
+    const response = await messageService.deletemessage(messageToDelete._id);
+  };
+
+  onSend = async (message) => {
+    console.log("this is from send message", message._id);
+
+    const response = await sendMessageServices.sendmessage(message._id);
+    console.log(response);
+    if (response) {
+      toast.success("Successfully messages send  ");
+    }
+  };
 
   doSubmit = async () => {
     console.log("do", this.state.data);
     const success = await messageService.createmessage(this.state.data);
     // const success = await driversService.createdriver(this.state.data);
     if (success) {
-      //   // window.location = "/";
-      toast.success("Successfully message log");
-      //   this.props.history.push("/");
+      window.location = "/messages";
+      toast.success("Successfully added message ");
+      // this.props.history.push("/messages");
     }
   };
 
@@ -99,6 +122,8 @@ class Message extends Validation {
               <tr>
                 <th scope="col">Subject</th>
                 <th scope="col">Message</th>
+                <th scope="col">Total message</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -106,6 +131,21 @@ class Message extends Validation {
                 <tr key={message._id}>
                   <td> {message.subject}</td>
                   <td> {message.message}</td>
+                  <td> {message.messageImport}</td>
+                  <td>
+                    <button
+                      onClick={() => this.onSend(message)}
+                      className="btn  m-2"
+                    >
+                      <i class="fa fa-paper-plane-o"></i>
+                    </button>
+                    <button
+                      onClick={() => this.onDelete(message)}
+                      className="btn  m-2"
+                    >
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

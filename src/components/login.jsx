@@ -33,7 +33,7 @@ class Login extends Validation {
     console.log(success);
     if (success) {
       toast.success("Successfully login");
-      // window.location = "/";
+      window.location = "/home";
     }
   };
 
@@ -43,8 +43,16 @@ class Login extends Validation {
     return (
       <div>
         <div className="row m-5">
-          <div className="col-8 text-center">
-            <h2 className="">what's app </h2>
+          <div className="col-8 ">
+            <h1 className="text-center">what's app </h1>
+            <h5 className="">
+              admin log id :admin@gmail.com <br />
+              password:12345678{" "}
+            </h5>
+            <h5 className="">
+              Driver log id :user@gmail.com <br />
+              password:12345678{" "}
+            </h5>
           </div>
 
           <div className="col-4">

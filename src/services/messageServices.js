@@ -1,7 +1,7 @@
 import http from "./httpService";
 
-function messageUrl() {
-  return process.env.REACT_APP_API_URL + "/message";
+function messageUrl(id) {
+  return process.env.REACT_APP_API_URL + "/message" + (id ? "/" + id : "");
 }
 
 export function getmessages() {
@@ -10,4 +10,8 @@ export function getmessages() {
 
 export async function createmessage(data) {
   return http.post(messageUrl(), data);
+}
+
+export async function deletemessage(id) {
+  return http.delete(messageUrl(id));
 }

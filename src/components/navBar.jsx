@@ -15,24 +15,24 @@ class NavBar extends Component {
           <ul className="navbar-nav   ">
             {driver && driver.isAdmin === false && (
               <>
-                <li className="nav-item ">
+                {/* <li className="nav-item ">
                   <NavLink to={"/myProfile"} className="  nav-link">
                     <i className="fa fa-home"> My profile</i>
                   </NavLink>
-                </li>
-
-                {/* <li className="nav-item ">
-                  <NavLink to={"/products"} className="  nav-link">
-                    Drivers<span className="sr-only">(current)</span>
-                  </NavLink>
                 </li> */}
+
+                <li className="nav-item ">
+                  <NavLink to={"/home"} className="  nav-link">
+                    <span className="fa "> Home</span>
+                  </NavLink>
+                </li>
                 <li className="nav-item ">
                   <NavLink to={"/documents"} className="  nav-link">
                     <i className="fa "> Documents</i>
                   </NavLink>
                 </li>
                 <li className="nav-item ">
-                  <NavLink className="nav-link " to="/logout">
+                  <NavLink className="nav-link " to={"/logout"}>
                     <i className="fa"> Logout</i>
                   </NavLink>
                 </li>
@@ -55,6 +55,11 @@ class NavBar extends Component {
             )}
             {driver && driver.isAdmin === true && (
               <>
+                <li className="nav-item ">
+                  <NavLink to={"/home"} className="  nav-link">
+                    <i className="fa"> Home</i>
+                  </NavLink>
+                </li>
                 <li className="nav-item ">
                   <NavLink to={"/drivers"} className="  nav-link">
                     <i className="fa"> Drivers admin</i>

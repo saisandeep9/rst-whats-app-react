@@ -6,10 +6,10 @@ class SideNav extends Component {
   state = {};
   render() {
     return (
-      <nav className="navbar navbar-dark  bg-dark  col-6 App-nav box">
+      <nav className="navbar navbar-dark  bg-dark  ml-3 App-nav ">
         <ul className="list-group navbar-nav">
           <li className="nav-item ">
-            <NavLink to="" className="  nav-link">
+            <NavLink to="home" className="  nav-link">
               <i className="fa">Dash Board</i>
             </NavLink>
           </li>
@@ -22,7 +22,7 @@ class SideNav extends Component {
 
           <li className="nav-item ">
             <NavLink to="/messages" className="  nav-link">
-              Message
+              <i class="fa fa-comments"> Message</i>
             </NavLink>
           </li>
           <li className="nav-item ">
