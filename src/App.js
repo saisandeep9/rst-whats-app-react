@@ -3,7 +3,7 @@ import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import auth from "./services/authService";
-import { Route, Redrect, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import Login from "./components/login";
 import Registration from "./components/registration";
@@ -12,8 +12,8 @@ import Logout from "./components/logout";
 
 //admin
 import DashBord from "./components/admin/dashboard";
-import Drivers from "./components/admin/drivers";
-import SideNav from "./components/admin/sideNave";
+import Users from "./components/admin/users";
+// import SideNav from "./components/admin/sideNave";
 
 //user
 import Message from "./components/admin/message";
@@ -21,9 +21,9 @@ import endClint from "./components/admin/endclient";
 import SendMessage from "./components/sendMessage";
 import Documents from "./components/documents";
 
-import Nav from "./components/nav";
-import Otppg from "./components/otppak";
-import Fb from "./components/firbase";
+// import Nav from "./components/nav";
+// import Otppg from "./components/otppak";
+// import Fb from "./components/firbase";
 
 // var otpGenerator = require("otp-generator");
 
@@ -31,21 +31,21 @@ import Fb from "./components/firbase";
 
 class App extends Component {
   state = {
-    driver: {},
+    user: {},
   };
 
   componentDidMount() {
-    const driver = auth.getCurrentUser();
-    this.setState({ driver });
+    const user = auth.getCurrentUser();
+    this.setState({ user });
   }
 
   render() {
-    const { driver } = this.state;
+    const { user } = this.state;
 
     return (
       <div className="App">
         <ToastContainer />
-        <NavBar driver={this.state.driver} />
+        <NavBar user={this.state.user} />
         <Switch>
           {/* <SendMessage /> */}
           {/* <SideNav /> */}
@@ -60,15 +60,14 @@ class App extends Component {
           {/* <Nav /> */}
 
           {/* admin */}
-          {driver && driver.isAdmin === true && (
+          {user && user.isAdmin === true && (
             <div className="row ">
-              <div className="col-md-2 col-1 bg-dark box">
-                <SideNav />
-              </div>
+              <div className="col-md-2 col-1 ">{/* <SideNav /> */}</div>
 
               <div className="col-9  ">
                 <Route path="/home" exact component={DashBord} />
-                <Route path="/drivers" exact component={Drivers} />
+                <Route path="/sendMessage" exact component={SendMessage} />
+                <Route path="/users" exact component={Users} />
                 <Route path="/messages" exact component={Message} />
                 <Route path="/endClint" exact component={endClint} />
                 <Route path="/logout" exact component={Logout} />
@@ -76,9 +75,15 @@ class App extends Component {
             </div>
           )}
           {/* user */}
-          {driver && driver.isAdmin === false && (
+          {user && user.isAdmin === false && (
             <>
-              <Route path="/home" exact component={SendMessage} />
+              <Route
+                path="/home"
+                exact
+                render={(props) => (
+                  <SendMessage {...props} user={this.state.user} />
+                )}
+              />
               <Route path="/documents" exact component={Documents} />
               <Route path="/logout" exact component={Logout} />
             </>

@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import auth from "../services/authService";
 
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import Validation from "./common/validation";
 import Joi from "joi-browser";
 
@@ -80,6 +80,7 @@ class Login extends Validation {
                   label="Password"
                   color="secondary"
                   size="small"
+                  type="password"
                   className="m-3 col-xl-10 col-10"
                   onChange={this.handleChange}
                   helperText={errors.password}

@@ -15,14 +15,14 @@ class SideNav extends Component {
           </li>
 
           <li className="nav-item ">
-            <NavLink to="/drivers" className="  nav-link">
+            <NavLink to="/users" className="  nav-link">
               <i className="fa">Drivers</i>
             </NavLink>
           </li>
 
           <li className="nav-item ">
             <NavLink to="/messages" className="  nav-link">
-              <i class="fa fa-comments"> Message</i>
+              <i className="fa fa-comments"> Message</i>
             </NavLink>
           </li>
           <li className="nav-item ">

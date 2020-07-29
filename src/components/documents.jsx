@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ProfileNave from "../components/profileNav";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Validation from "./common/validation";
+// import Validation from "./common/validation";
 import Joi from "joi-browser";
 
 class Documents extends Component {

@@ -22,7 +22,7 @@ function setJwt(jwt) {
 export default {
   get: axios.get,
   post: axios.post,
-  //   put: axios.put,
+  put: axios.put,
   //   patch: axios.patch,
   delete: axios.delete,
   setJwt,

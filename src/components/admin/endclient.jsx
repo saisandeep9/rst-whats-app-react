@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 import * as clintService from "../../services/endClintServices";
 
@@ -15,36 +15,40 @@ class endClient extends Component {
     this.setState({ mobileNumber });
   }
 
-  onChange(e) {
+  onChange = async (e) => {
     let files = e.target.files[0];
     console.log("file", files);
     console.log("file2", files.name);
 
     let data = new FormData();
 
-    data.set("myFile", files, files.name);
+    data.append("file", files, files.name);
 
     console.log("form data", data);
 
-    const URL = "http://localhost:3900/api/clients";
+    // const URL = "http://localhost:3900/api/clients";
 
-    // axios.post(URL, { files });
+    // const URL = "https://rtsbooking.herokuapp.com/api/clients";
+    const response = await clintService.uploade(data);
+
+    // const response = axios.post(URL, data);
+    if (response) {
+      console.log(response);
+    }
 
     // let reader = new FileReader();
-    // reader.readAsDataURL(files[0]);
+    // reader.readAsDataURL(files);
 
     // reader.onload = (e) => {
     //   const URL = "http://localhost:3900/api/clients";
     //   const formData = { file: e.target.result };
     //   console.log(formData);
 
-    //   return axios.post(URL, formData);
+    //   axios.post(URL, formData);
     // };
-  }
+  };
   render() {
     const { mobileNumber } = this.state;
-
-    console.log("mob", mobileNumber);
 
     return (
       <div>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { toast } from "react-toastify";
 import * as messageService from "../../services/messageServices";
@@ -40,6 +40,9 @@ class Message extends Validation {
     this.setState({ logMessage: filteredMessages });
 
     const response = await messageService.deletemessage(messageToDelete._id);
+    if (response) {
+      toast.success("Successfully messages deleted  ");
+    }
   };
 
   onSend = async (message) => {
@@ -65,13 +68,13 @@ class Message extends Validation {
 
   render() {
     const { data, errors, logMessage } = this.state;
-    console.log(logMessage);
+    // console.log(logMessage);
     return (
       <div>
         <div className="row ">
           <div className="col-md-10">
             <form
-              className=" m-2 p-1  col-11 col-sm-7  col-md-11"
+              className=" m-1 p-1  col-11 col-sm-7  col-md-11"
               onSubmit={this.handleSubmit}
             >
               <h4 className="text-center"> Message</h4>
@@ -82,7 +85,7 @@ class Message extends Validation {
                 // color="secondary"
                 size="small"
                 value={data.subject}
-                className=" m-3 col-md-5 col-10"
+                className=" m-2 col-md-5 col-10"
                 onChange={this.handleChange}
                 helperText={errors.subject}
                 error={errors && errors.subject}
@@ -97,7 +100,7 @@ class Message extends Validation {
                 value={data.message}
                 rows={3}
                 onChange={this.handleChange}
-                className=" m-3 col-md-11 col-10"
+                className=" m-2 col-md-11 col-10"
                 variant="outlined"
                 errorText={errors && errors.message}
                 required
@@ -107,7 +110,7 @@ class Message extends Validation {
 
               <Button
                 type="submit"
-                className="m-3 col-xl-7 col-7 "
+                className="m-1 col-xl-7 col-7 "
                 color="primary"
               >
                 Submit
@@ -116,7 +119,7 @@ class Message extends Validation {
           </div>
         </div>
 
-        <div className=" col-2 col-md-7 mt-3  w-40 ">
+        <div className=" col-2 col-md-11 mt-3  w-40 ">
           <table className="table table-striped   ">
             <thead>
               <tr>

@@ -5,15 +5,13 @@ class NavBar extends Component {
   state = {};
 
   render() {
-    const { driver } = this.props;
-
-    console.log(driver);
+    const { user } = this.props;
 
     return (
       <div>
         <nav className="navbar navbar-dark  navbar-expand-lg App-nav box ">
           <ul className="navbar-nav   ">
-            {driver && driver.isAdmin === false && (
+            {user && user.isAdmin === false && (
               <>
                 {/* <li className="nav-item ">
                   <NavLink to={"/myProfile"} className="  nav-link">
@@ -31,6 +29,18 @@ class NavBar extends Component {
                     <i className="fa "> Documents</i>
                   </NavLink>
                 </li>
+
+                <li>
+                  <NavLink className="nav-link " to={"/home"}>
+                    <i className="fa">
+                      {" "}
+                      Burned Messages{" "}
+                      <span class="badge badge-light">
+                        {user.burnedMessages}
+                      </span>
+                    </i>
+                  </NavLink>
+                </li>
                 <li className="nav-item ">
                   <NavLink className="nav-link " to={"/logout"}>
                     <i className="fa"> Logout</i>
@@ -39,7 +49,7 @@ class NavBar extends Component {
               </>
             )}
 
-            {!driver && (
+            {!user && (
               <>
                 <li className="nav-item ">
                   <NavLink className="nav-link " to="/signup">
@@ -53,18 +63,18 @@ class NavBar extends Component {
                 </li>
               </>
             )}
-            {driver && driver.isAdmin === true && (
+            {user && user.isAdmin === true && (
               <>
                 <li className="nav-item ">
                   <NavLink to={"/home"} className="  nav-link">
                     <i className="fa"> Home</i>
                   </NavLink>
                 </li>
-                <li className="nav-item ">
-                  <NavLink to={"/drivers"} className="  nav-link">
+                {/* <li className="nav-item ">
+                  <NavLink to={"/users"} className="  nav-link">
                     <i className="fa"> Drivers admin</i>
                   </NavLink>
-                </li>
+                </li> */}
                 <li className="nav-item ">
                   <NavLink className="nav-link " to="/logout">
                     <i className="fa"> Logout</i>

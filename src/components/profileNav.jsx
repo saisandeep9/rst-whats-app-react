@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 // import MyProfile from "../components/myprofile";
 // import Documents from "../components/documents";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+// import TextField from "@material-ui/core/TextField";
+// import Button from "@material-ui/core/Button";
 
 class ProfileNav extends Component {
   state = {};

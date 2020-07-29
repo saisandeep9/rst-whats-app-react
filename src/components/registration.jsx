@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import ProfileNave from "./profileNav";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
+// import ProfileNave from "./profileNav";
+// import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Validation from "./common/validation";
 import Joi from "joi-browser";
-import * as driversService from "../services/driversService";
+import * as usersService from "../services/usersService";
 import { toast } from "react-toastify";
 
 class Registration extends Validation {
@@ -30,7 +30,7 @@ class Registration extends Validation {
   doSubmit = async () => {
     // console.log("do", this.state.data);
     // const success = await userService.register(this.state.data);
-    const success = await driversService.createdriver(this.state.data);
+    const success = await usersService.createusers(this.state.data);
     if (success) {
       // window.location = "/";
       toast.success("Successfully registrade");
@@ -41,11 +41,11 @@ class Registration extends Validation {
   render() {
     const { data, errors } = this.state;
     return (
-      <div className="row">
-        <div className="col-lg-3 bg-dark"></div>
-        <div className="col-lg-6">
+      <div className="row ">
+        <div className="col-lg-3 "></div>
+        <div className="col-lg-4">
           <form
-            className=" m-3 p-2  col-11 col-sm-7 box col-md-11"
+            className=" m-1 p-1 col-11 col-sm-7 box col-md-9 mt-2"
             onSubmit={this.handleSubmit}
           >
             <h3 className="text-center"> My profile</h3>
@@ -117,7 +117,7 @@ class Registration extends Validation {
             </Button>
           </form>
         </div>
-        <div className="col-lg-3 bg-dark"></div>
+        <div className="col-lg-3"></div>
       </div>
     );
   }

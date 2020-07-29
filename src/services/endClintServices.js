@@ -7,3 +7,7 @@ function clientUrl() {
 export function getclients() {
   return http.get(clientUrl());
 }
+
+export function uploade(data) {
+  return http.post(clientUrl(), data);
+}
