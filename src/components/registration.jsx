@@ -20,11 +20,11 @@ class Registration extends Validation {
     errors: {},
   };
   schema = {
-    fristName: Joi.string().required().min(6),
-    lastName: Joi.string().required().min(6),
+    fristName: Joi.string().required().min(3),
+    lastName: Joi.string().required().min(3),
     emailId: Joi.string(),
-    mobileNumber: Joi.number().required().min(5),
-    password: Joi.string().required().min(5),
+    mobileNumber: Joi.number().required().min(10),
+    password: Joi.string().required().min(4),
   };
 
   doSubmit = async () => {
