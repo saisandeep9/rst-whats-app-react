@@ -4,7 +4,7 @@ import * as sendMessageServices from "../services/sendMessageServices";
 
 import * as usersService from "../../src/services/usersService";
 
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 class SendMessage extends Component {
   state = {
@@ -41,12 +41,12 @@ class SendMessage extends Component {
     const update = await usersService.updateusers(this.props.user._id);
 
     console.log(update);
-    // const response = await sendMessageServices.deletemessage(message._id);
-    // if (response && response.status === 200) {
-    //   toast.success(`Successfully deleted .`);
-    // } else {
-    //   // this.setState({ logMessage: actualMessages });
-    // }
+    const response = await sendMessageServices.deletemessage(message._id);
+    if (response && response.status === 200) {
+      toast.success(`Successfully deleted .`);
+    } else {
+      // this.setState({ logMessage: actualMessages });
+    }
   };
 
   render() {
