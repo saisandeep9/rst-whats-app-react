@@ -12,7 +12,7 @@ class Validation extends Component {
     e.preventDefault();
     const errors = this.validate();
     this.setState({ errors: errors || {} });
-    console.log(errors);
+
     if (errors) return;
     // if (Object.keys(errors).length !== 0) return;
 
@@ -33,7 +33,7 @@ class Validation extends Component {
 
     //set values in state
     const data = { ...this.state.data };
-    console.log(data);
+
     data[input.name] = input.value;
     this.setState({ data, errors });
   };

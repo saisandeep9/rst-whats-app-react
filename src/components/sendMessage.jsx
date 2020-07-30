@@ -38,7 +38,7 @@ class SendMessage extends Component {
 
     // https://web.whatsapp.com/send?phone=919113516006&text=test+1
 
-    window.location = url;
+    // window.location = url;
 
     const update = await usersService.updateusers(this.props.user._id);
 
