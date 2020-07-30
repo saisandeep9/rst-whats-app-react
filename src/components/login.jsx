@@ -33,7 +33,7 @@ class Login extends Validation {
     console.log(success);
     if (success) {
       toast.success("Successfully login");
-      window.location = "/home";
+      window.location = "/";
     }
   };
 
@@ -43,8 +43,8 @@ class Login extends Validation {
     return (
       <div>
         <div className="row m-5">
-          <div className="col-8 ">
-            <h1 className="text-center">what's app </h1>
+          <div className="col-md-8 ">
+            {/* <h1 className="text-center">what's app </h1>
             <h5 className="">
               admin log id :admin@gmail.com <br />
               password:12345678{" "}
@@ -52,52 +52,54 @@ class Login extends Validation {
             <h5 className="">
               Driver log id :user@gmail.com <br />
               password:12345678{" "}
-            </h5>
+            </h5> */}
           </div>
 
-          <div className="col-4">
-            <div
-              className="container  box  float-right "
-              // style={{ width: "0%" }}
+          <div
+            className="   float-right "
+            // style={{ width: "0%" }}
+          >
+            <form
+              onSubmit={this.handleSubmit}
+              className="m-1 p-1 col-11 col-12 col-md-9 mt-2 "
             >
-              <form onSubmit={this.handleSubmit}>
-                <h1 className="text-center"> Login</h1>
+              {/*m-2 col-md-4 col-12*/}
+              <h1 className="text-center "> Login</h1>
 
-                <TextField
-                  name="emailId"
-                  label="E-mail"
-                  color="secondary"
-                  size="small"
-                  className="m-3 col-xl-10 col-10"
-                  onChange={this.handleChange}
-                  helperText={errors.lastName}
-                  error={errors.lastName}
-                  required
-                />
+              <TextField
+                name="emailId"
+                label="E-mail"
+                color="secondary"
+                size="small"
+                className="m-3 col-xl-10 col-10"
+                onChange={this.handleChange}
+                helperText={errors.lastName}
+                error={errors.lastName}
+                required
+              />
 
-                <TextField
-                  name="password"
-                  label="Password"
-                  color="secondary"
-                  size="small"
-                  type="password"
-                  className="m-3 col-xl-10 col-10"
-                  onChange={this.handleChange}
-                  helperText={errors.password}
-                  error={errors.password}
-                  required
-                />
+              <TextField
+                name="password"
+                label="Password"
+                color="secondary"
+                size="small"
+                type="password"
+                className="m-3 col-xl-10 col-10"
+                onChange={this.handleChange}
+                helperText={errors.password}
+                error={errors.password}
+                required
+              />
 
-                <center>
-                  <button
-                    type="submit"
-                    className=" btn btn-primary  btn-block mb-3 mt-2"
-                  >
-                    Sign up
-                  </button>
-                </center>
-              </form>
-            </div>
+              <center>
+                <button
+                  type="submit"
+                  className=" btn btn-primary  btn-block mb-3 mt-2"
+                >
+                  Sign up
+                </button>
+              </center>
+            </form>
           </div>
         </div>
       </div>

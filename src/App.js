@@ -65,7 +65,7 @@ class App extends Component {
               <div className="col-md-2 col-1 ">{/* <SideNav /> */}</div>
 
               <div className="col-9  ">
-                <Route path="/home" exact component={DashBord} />
+                <Route path="/" exact component={DashBord} />
                 <Route path="/sendMessage" exact component={SendMessage} />
                 <Route path="/users" exact component={Users} />
                 <Route path="/messages" exact component={Message} />
@@ -78,7 +78,7 @@ class App extends Component {
           {user && user.isAdmin === false && (
             <>
               <Route
-                path="/home"
+                path="/"
                 exact
                 render={(props) => (
                   <SendMessage {...props} user={this.state.user} />

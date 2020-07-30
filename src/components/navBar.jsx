@@ -20,7 +20,7 @@ class NavBar extends Component {
                 </li> */}
 
                 <li className="nav-item ">
-                  <NavLink to={"/home"} className="  nav-link">
+                  <NavLink to={"/"} className="  nav-link">
                     <span className="fa "> Home</span>
                   </NavLink>
                 </li>
@@ -31,7 +31,7 @@ class NavBar extends Component {
                 </li>
 
                 <li>
-                  <NavLink className="nav-link " to={"/home"}>
+                  <NavLink className="nav-link " to={"/"}>
                     <i className="fa">
                       {" "}
                       Burned Messages{" "}
@@ -66,7 +66,7 @@ class NavBar extends Component {
             {user && user.isAdmin === true && (
               <>
                 <li className="nav-item ">
-                  <NavLink to={"/home"} className="  nav-link">
+                  <NavLink to={"/"} className="  nav-link">
                     <i className="fa"> Home</i>
                   </NavLink>
                 </li>
