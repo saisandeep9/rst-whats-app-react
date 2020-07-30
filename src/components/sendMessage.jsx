@@ -22,21 +22,23 @@ class SendMessage extends Component {
     console.log(this.props.user._id);
 
     // let url = `whatsapp://send?text=whats app messssss&phone=918179600071`;
-    // let url =
-    //   `https://api.whatsapp.com/send?phone=` +
-    //   message.endClientId.mobileNumber +
-    //   `&text=` +
-    //   message.messageId.message;
-
-    let url2 =
-      "https://web.whatsapp.com/send?phone=" +
+    let url =
+      `https://api.whatsapp.com/send?phone=` +
       message.endClientId.mobileNumber +
-      "&text=" +
+      `&text=` +
       message.messageId.message;
+
+    // let url2 =
+    //   "https://web.whatsapp.com/send?phone=" +
+    //   message.endClientId.mobileNumber +
+    //   "&text=" +
+    //   message.messageId.message;
 
     // console.log(url2);
 
-    window.location = url2;
+    // https://web.whatsapp.com/send?phone=919113516006&text=test+1
+
+    window.location = url;
 
     const update = await usersService.updateusers(this.props.user._id);
 
@@ -65,36 +67,21 @@ class SendMessage extends Component {
               </tr>
             </thead>
             <tbody>
-              {sendMessage.map(
-                (message) => (
-                  <tr key={message._id}>
-                    {/* <td>
-                      {Math.floor(Math.random() * sendMessage.length + 7)}
-                    </td> */}
-                    {/* <td> {message.messageId.message}</td> */}
-                    <td> {message._id}</td>
-                    {/* <td> {driver.mobileNumber}</td> */}
-                    {/* <td> {driver.emailId}</td> */}
-                    <td>
-                      <button
-                        onClick={() => this.onSend(message)}
-                        className="btn  m-2 "
-                        // target="_blank"
-                      >
-                        <i className="fa fa-paper-plane-o"> Send</i>
-                      </button>
-                      {/* {console.log(message.messageId)} */}
-                    </td>
-                  </tr>
-                )
+              {sendMessage.map((message) => (
+                <tr key={message._id}>
+                  <td> {message._id}</td>
 
-                // <tr>
-                //   <th scope="row">1</th>
-                //   <td>Mark</td>
-                //   <td>Otto</td>
-                //   <td>@mdo</td>
-                // </tr>
-              )}
+                  <td>
+                    <button
+                      onClick={() => this.onSend(message)}
+                      className="btn  m-2 "
+                      // target="_blank"
+                    >
+                      <i className="fa fa-paper-plane-o"> Send</i>
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
