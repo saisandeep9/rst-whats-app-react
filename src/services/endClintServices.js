@@ -11,3 +11,7 @@ export function getclients() {
 export function uploade(data) {
   return http.post(clientUrl(), data);
 }
+
+export function mobileNumberCount() {
+  return http.get(clientUrl() + "/count");
+}

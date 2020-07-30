@@ -3,6 +3,7 @@ import * as usersService from "../../services/usersService";
 import * as messageService from "../../services/messageServices";
 
 import * as sendMessageServices from "../../services/sendMessageServices";
+
 import * as clintService from "../../services/endClintServices";
 
 import { NavLink } from "react-router-dom";
@@ -11,19 +12,28 @@ class DashBord extends Component {
   state = {
     users: [],
     logMessage: [],
-    sendMessage: [],
-    mobileNumber: [],
+    mobileNumberCount: 0,
+
+    messageCount: 0,
   };
 
   async componentDidMount() {
     const { data: users } = await usersService.getusers();
     const { data: logMessage } = await messageService.getmessages();
-    const { data: sendMessage } = await sendMessageServices.getmessages();
-    const { data: mobileNumber } = await clintService.getclients();
+    // const { data: sendMessage } = await sendMessageServices.getmessages();
+    // const { data: mobileNumber } = await clintService.getclients();
+    const { data: mobileNumberCount } = await clintService.mobileNumberCount();
+    const { data: messageCount } = await sendMessageServices.messagecount();
 
-    // this.setState({ logMessage });
+    // console.log("test", test.messageCount);
 
-    this.setState({ users, logMessage, sendMessage, mobileNumber });
+    this.setState({
+      users,
+      logMessage,
+      mobileNumberCount: mobileNumberCount.mobileNumberCount,
+
+      messageCount: messageCount.messageCount,
+    });
   }
 
   getburndMessages = () => {
@@ -36,7 +46,14 @@ class DashBord extends Component {
   };
 
   render() {
-    const { users, logMessage, sendMessage, mobileNumber } = this.state;
+    const {
+      users,
+      logMessage,
+      mobileNumberCount,
+      mobileNumber,
+      messageCount,
+    } = this.state;
+    console.log(mobileNumberCount);
 
     return (
       <div className="row ">
@@ -69,7 +86,7 @@ class DashBord extends Component {
           >
             <h3>{logMessage.length}</h3>
             <h3>
-              <i class="fa fa-bullhorn"></i>
+              <i className="fa fa-bullhorn"></i>
             </h3>
             <h6> campings messages </h6>
           </NavLink>
@@ -84,7 +101,7 @@ class DashBord extends Component {
             style={{ color: "black" }}
           >
             {" "}
-            <h3>{sendMessage.length}</h3>
+            <h3>{messageCount}</h3>
             <h3>
               {" "}
               <i className="fa fa-comments"></i>
@@ -103,10 +120,10 @@ class DashBord extends Component {
             style={{ color: "black" }}
           >
             {" "}
-            <h3>{mobileNumber.length}</h3>
+            <h3>{mobileNumberCount}</h3>
             <h3>
               {" "}
-              <i class="fa fa-address-card"></i>
+              <i className="fa fa-address-card"></i>
             </h3>
             <h6> Contacts </h6>
           </NavLink>
