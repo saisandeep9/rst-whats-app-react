@@ -18,7 +18,8 @@ class SendMessage extends Component {
   }
 
   onSend = async (message) => {
-    console.log(this.props.user._id);
+    // console.log(this.props.user._id);
+    // console.log(message._id);
 
     // let url = `whatsapp://send?text=whats app messssss&phone=918179600071`;
     let url =
@@ -41,7 +42,6 @@ class SendMessage extends Component {
 
     const update = await usersService.updateusers(this.props.user._id);
 
-    console.log(update);
     const response = await sendMessageServices.deletemessage(message._id);
     if (response && response.status === 200) {
       toast.success(`Successfully deleted .`);

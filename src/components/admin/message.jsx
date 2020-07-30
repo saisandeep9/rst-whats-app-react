@@ -27,7 +27,7 @@ class Message extends Validation {
 
   schema = {
     subject: Joi.string().required().min(5),
-    message: Joi.string().required().min(6),
+    message: Joi.string().required().min(4),
   };
   onDelete = async (messageToDelete) => {
     console.log("onDelete", messageToDelete);
