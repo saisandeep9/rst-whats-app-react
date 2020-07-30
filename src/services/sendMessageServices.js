@@ -17,6 +17,5 @@ export async function deletemessage(id) {
 }
 
 export async function messagecount() {
-  // return http.get(process.env.REACT_APP_API_URL + "/messagecount");
   return http.get(sendMessageUrl() + "/messagecount");
 }

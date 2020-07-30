@@ -18,7 +18,6 @@ class SendMessage extends Component {
   }
 
   onSend = async (message) => {
-    console.log("this from onsent", message.endClientId.mobileNumber);
     console.log(this.props.user._id);
 
     // let url = `whatsapp://send?text=whats app messssss&phone=918179600071`;

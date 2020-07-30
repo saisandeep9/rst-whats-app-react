@@ -56,7 +56,16 @@ class endClient extends Component {
           <h1>upload file</h1>
         </div>
 
-        <input type="file" name="file" onChange={this.onChange} />
+        <input
+          type="file"
+          accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          name="file"
+          onChange={this.onChange}
+        />
+        <small id="emailHelp" class="form-text text-muted">
+          Upload only excel file
+        </small>
+
         {/* <div className="box">
           <input type="file" onChange={this.onFileChange} />
           <button onClick={this.onFileUpload}>Upload!</button>
