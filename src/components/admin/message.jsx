@@ -30,7 +30,6 @@ class Message extends Validation {
     message: Joi.string().required().min(4),
   };
   onDelete = async (messageToDelete) => {
-    console.log("onDelete", messageToDelete);
     const actualMessages = this.state.logMessage;
 
     const filteredMessages = actualMessages.filter(
@@ -46,17 +45,14 @@ class Message extends Validation {
   };
 
   onSend = async (message) => {
-    console.log("this is from send message", message._id);
-
     const response = await sendMessageServices.sendmessage(message._id);
-    console.log(response);
+    // console.log(response);
     if (response) {
       toast.success("Successfully messages send  ");
     }
   };
 
   doSubmit = async () => {
-    console.log("do", this.state.data);
     const success = await messageService.createmessage(this.state.data);
     // const success = await driversService.createdriver(this.state.data);
     if (success) {
@@ -68,59 +64,51 @@ class Message extends Validation {
 
   render() {
     const { data, errors, logMessage } = this.state;
-    // console.log(logMessage);
+
     return (
       <div>
-        <div className="row ">
-          <div className="col-md-10">
-            <form
-              className=" m-1 p-1  col-11 col-sm-7  col-md-11"
-              onSubmit={this.handleSubmit}
-            >
-              <h4 className="text-center"> Message</h4>
+        <form
+          className=" mt-1 p-1  col-12   col-md-12"
+          onSubmit={this.handleSubmit}
+        >
+          <h4 className="text-center"> Message</h4>
 
-              <TextField
-                name="subject"
-                label="Subject"
-                // color="secondary"
-                size="small"
-                value={data.subject}
-                className=" m-2 col-md-5 col-10"
-                onChange={this.handleChange}
-                helperText={errors.subject}
-                error={errors && errors.subject}
-                required
-              />
+          <TextField
+            name="subject"
+            label="Subject"
+            // color="secondary"
+            size="small"
+            value={data.subject}
+            className=" m-2 col-md-5 col-12"
+            onChange={this.handleChange}
+            error={errors && errors.subject}
+            helperText={errors.subject}
+            // errorText={errors}
+            required
+          />
 
-              <TextField
-                name="message"
-                label="Message"
-                multiline
-                size="small"
-                value={data.message}
-                rows={3}
-                onChange={this.handleChange}
-                className=" m-2 col-md-11 col-10"
-                variant="outlined"
-                errorText={errors && errors.message}
-                required
-              />
+          <TextField
+            name="message"
+            label="Message"
+            multiline
+            size="small"
+            value={data.message}
+            rows={3}
+            onChange={this.handleChange}
+            className=" m-2 col-md-11 col-12"
+            variant="outlined"
+            required
+          />
 
-              <br />
+          <br />
 
-              <Button
-                type="submit"
-                className="m-1 col-xl-7 col-7 "
-                color="primary"
-              >
-                Submit
-              </Button>
-            </form>
-          </div>
-        </div>
+          <Button type="submit" className="m-1 col-xl-3 col-7 " color="primary">
+            Submit
+          </Button>
+        </form>
 
-        <div className=" col-2 col-md-11 mt-3  w-40 ">
-          <table className="table table-striped   ">
+        <div className=" col-12 col-md-12 mt-3   w-40 ">
+          <table className="table table-striped    ">
             <thead>
               <tr>
                 <th scope="col">Subject</th>
@@ -140,13 +128,13 @@ class Message extends Validation {
                       onClick={() => this.onSend(message)}
                       className="btn  m-2"
                     >
-                      <i class="fa fa-paper-plane-o"></i>
+                      <i className="fa fa-paper-plane-o"></i>
                     </button>
                     <button
                       onClick={() => this.onDelete(message)}
                       className="btn  m-2"
                     >
-                      <i class="fa fa-trash"></i>
+                      <i className="fa fa-trash"></i>
                     </button>
                   </td>
                 </tr>

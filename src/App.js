@@ -3,12 +3,13 @@ import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import auth from "./services/authService";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Login from "./components/login";
 import Registration from "./components/registration";
 import NavBar from "./components/navBar";
 import Logout from "./components/logout";
+import SendMessage2 from "./components/sendMessage2";
 
 //admin
 import DashBord from "./components/admin/dashboard";
@@ -47,50 +48,57 @@ class App extends Component {
         <ToastContainer />
         <NavBar user={this.state.user} />
         <Switch>
-          {/* <SendMessage /> */}
-          {/* <SideNav /> */}
+          <React.Fragment>
+            {/* admin */}
+            {user && user.isAdmin === true && (
+              <div className="row ">
+                <div className="col-md-2 col-0 ">{/* <SideNav /> */}</div>
 
-          {/* <Otppg /> */}
-          {/* <Registration />
-        <Fb /> */}
-
-          {/* <ProfileNave /> */}
-          {/* <MyProfile /> */}
-          {/* <Documents /> */}
-          {/* <Nav /> */}
-
-          {/* admin */}
-          {user && user.isAdmin === true && (
-            <div className="row ">
-              <div className="col-md-2 col-1 ">{/* <SideNav /> */}</div>
-
-              <div className="col-9  ">
-                <Route path="/" exact component={DashBord} />
-                <Route path="/sendMessage" exact component={SendMessage} />
-                <Route path="/users" exact component={Users} />
-                <Route path="/messages" exact component={Message} />
-                <Route path="/endClint" exact component={endClint} />
-                <Route path="/logout" exact component={Logout} />
+                <div className="col-9  ">
+                  <Route path="/" exact component={DashBord} />
+                  <Route
+                    path="/sendMessage"
+                    exact
+                    render={(props) => (
+                      <SendMessage {...props} user={this.state.user} />
+                    )}
+                  />
+                  <Route path="/users" exact component={Users} />
+                  <Route path="/messages" exact component={Message} />
+                  <Route path="/endClint" exact component={endClint} />
+                  <Route path="/logout" exact component={Logout} />
+                  <Redirect to="/" />
+                </div>
               </div>
-            </div>
-          )}
-          {/* user */}
-          {user && user.isAdmin === false && (
-            <>
-              <Route
-                path="/"
-                exact
-                render={(props) => (
-                  <SendMessage {...props} user={this.state.user} />
-                )}
-              />
-              <Route path="/documents" exact component={Documents} />
-              <Route path="/logout" exact component={Logout} />
-            </>
-          )}
-
-          <Route path="/signup" exact component={Registration} />
-          <Route path="/" exact component={Login} />
+            )}
+            {/* user */}
+            {user && user.isAdmin === false && (
+              <>
+                <Route
+                  path="/"
+                  exact
+                  render={(props) => (
+                    <SendMessage {...props} user={this.state.user} />
+                  )}
+                />
+                <Route path="/documents" exact component={Documents} />
+                <Route path="/logout" exact component={Logout} />
+                <Redirect to="/" />
+              </>
+            )}
+            {!user && (
+              <>
+                <Route
+                  path="/withoutUserMessage"
+                  exact
+                  component={SendMessage2}
+                />
+                <Route path="/signup" exact component={Registration} />
+                <Route path="/" exact component={Login} />
+                <Redirect to="/" />
+              </>
+            )}
+          </React.Fragment>
         </Switch>
 
         {/* <Route path="/documents" exact component={Documents} /> */}

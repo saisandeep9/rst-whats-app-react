@@ -2,18 +2,18 @@ import React, { Component } from "react";
 
 import * as sendMessageServices from "../services/sendMessageServices";
 
-import * as usersService from "../../src/services/usersService";
+// import * as usersService from "../../src/services/usersService";
 
 import { toast } from "react-toastify";
 
-class SendMessage extends Component {
+class SendMessage2 extends Component {
   state = {
     sendMessage: [],
   };
 
   async componentDidMount() {
     const { data: sendMessage } = await sendMessageServices.getmessages();
-    // console.log(sendMessage);
+
     this.setState({ sendMessage });
   }
 
@@ -32,6 +32,7 @@ class SendMessage extends Component {
     );
 
     this.setState({ sendMessage: filteredMessages });
+
     // let url2 =
     //   "https://web.whatsapp.com/send?phone=" +
     //   message.endClientId.mobileNumber +
@@ -42,8 +43,9 @@ class SendMessage extends Component {
 
     // https://web.whatsapp.com/send?phone=919113516006&text=test+1
 
-    const update = await usersService.updateusers(this.props.user._id);
+    // const update = await usersService.updateusers(this.props.user._id);
     window.location = url;
+
     const response = await sendMessageServices.deletemessage(message._id);
     if (response && response.status === 200) {
       toast.success(`Successfully deleted .`);
@@ -89,4 +91,4 @@ class SendMessage extends Component {
   }
 }
 
-export default SendMessage;
+export default SendMessage2;

@@ -35,7 +35,7 @@ class NavBar extends Component {
                     <i className="fa">
                       {" "}
                       Burned Messages{" "}
-                      <span class="badge badge-light">
+                      <span className="badge badge-light">
                         {user.burnedMessages}
                       </span>
                     </i>
@@ -59,6 +59,11 @@ class NavBar extends Component {
                 <li className="nav-item ">
                   <NavLink className="nav-link " to="/">
                     <i className="fa"> Log in</i>
+                  </NavLink>
+                </li>
+                <li className="nav-item ">
+                  <NavLink className="nav-link " to="/withoutUserMessage">
+                    <i className="fa"> Send Message</i>
                   </NavLink>
                 </li>
               </>
