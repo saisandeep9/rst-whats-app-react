@@ -52,9 +52,9 @@ class endClient extends Component {
 
     return (
       <div>
-        <div onSubmit={this.OnFormSbumit}></div>
-        <div className="row mt-2">
-          <div className="col-6">
+        {/* <div onSubmit={this.OnFormSbumit}></div> */}
+        <div className="row m-1  ">
+          <div className="col-md-8 m-1  col-12">
             <h1>upload file</h1>
             <input
               type="file"
@@ -74,7 +74,7 @@ class endClient extends Component {
               </p>
             </lu>
           </div>
-          <div className="col-6">
+          <div className="col-md-3 ml-1 ">
             <img
               src="https://firebasestorage.googleapis.com/v0/b/test-5823c.appspot.com/o/exl.JPG?alt=media&token=07148d8e-11b1-4ad9-af26-8d70f124395d"
               alt="Excel file"
@@ -89,7 +89,7 @@ class endClient extends Component {
           <button onClick={this.onFileUpload}>Upload!</button>
         </div> */}
 
-        <div className=" col-2 col-md-7 mt-5  w-40 ">
+        <div className=" col-12  col-md-7 mt-5  w-40 ">
           <table className="table table-striped   ">
             <thead>
               <tr>

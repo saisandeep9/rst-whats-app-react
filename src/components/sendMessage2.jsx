@@ -17,18 +17,21 @@ class SendMessage2 extends Component {
     this.setState({ sendMessage });
   }
 
-  onSend = async (message) => {
+  onSend = async (messageTosend) => {
     // let url = `whatsapp://send?text=whats app messssss&phone=918179600071`;
+
     let url =
       `https://api.whatsapp.com/send?phone=` +
-      message.endClientId.mobileNumber +
+      messageTosend.endClientId.mobileNumber +
       `&text=` +
-      message.messageId.message;
+      messageTosend.messageId.message;
 
-    const actualMessages = this.state.sendMessage;
+    var actualMessages = this.state.sendMessage;
 
-    const filteredMessages = actualMessages.filter(
-      (message) => message._id !== message._id
+    // console.log(messageTosend);
+
+    let filteredMessages = actualMessages.filter(
+      (message) => message._id !== messageTosend._id
     );
 
     this.setState({ sendMessage: filteredMessages });
@@ -44,9 +47,9 @@ class SendMessage2 extends Component {
     // https://web.whatsapp.com/send?phone=919113516006&text=test+1
 
     // const update = await usersService.updateusers(this.props.user._id);
-    window.location = url;
 
-    const response = await sendMessageServices.deletemessage(message._id);
+    const response = await sendMessageServices.deletemessage(messageTosend._id);
+    window.location = url;
     if (response && response.status === 200) {
       toast.success(`Successfully deleted .`);
     } else {

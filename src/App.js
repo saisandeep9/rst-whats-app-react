@@ -67,7 +67,7 @@ class App extends Component {
                   <Route path="/messages" exact component={Message} />
                   <Route path="/endClint" exact component={endClint} />
                   <Route path="/logout" exact component={Logout} />
-                  <Redirect to="/" />
+                  {/* <Redirect to="/" /> */}
                 </div>
               </div>
             )}
