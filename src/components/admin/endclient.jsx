@@ -75,7 +75,7 @@ class endClient extends Component {
             </lu>
           </div>
           <div className="col-6">
-            <img src="exl.jpg" alt="Excel file" width="200" height="250" />
+            {/* <img src="exl.jpg" alt="Excel file" width="200" height="250" /> */}
           </div>
         </div>
 
