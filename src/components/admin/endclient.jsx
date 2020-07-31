@@ -75,7 +75,12 @@ class endClient extends Component {
             </lu>
           </div>
           <div className="col-6">
-            {/* <img src="exl.jpg" alt="Excel file" width="200" height="250" /> */}
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/test-5823c.appspot.com/o/exl.JPG?alt=media&token=07148d8e-11b1-4ad9-af26-8d70f124395d"
+              alt="Excel file"
+              width="200"
+              height="250"
+            />
           </div>
         </div>
 
