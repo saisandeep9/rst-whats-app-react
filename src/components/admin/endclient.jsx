@@ -52,19 +52,32 @@ class endClient extends Component {
 
     return (
       <div>
-        <div onSubmit={this.OnFormSbumit}>
-          <h1>upload file</h1>
+        <div onSubmit={this.OnFormSbumit}></div>
+        <div className="row mt-2">
+          <div className="col-6">
+            <h1>upload file</h1>
+            <input
+              type="file"
+              accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+              name="file"
+              onChange={this.onChange}
+            />
+            <small id="emailHelp" class="form-text text-muted">
+              Upload only excel file
+            </small>
+            <lu>
+              <p class="h6 text-muted">
+                <li>Mobile Numbers should be in `A` column and first Sheet</li>
+              </p>
+              <p class="h6 text-muted">
+                <li>sheet name must me "Sheet1"</li>
+              </p>
+            </lu>
+          </div>
+          <div className="col-6">
+            <img src="exl.jpg" alt="Excel file" width="200" height="250" />
+          </div>
         </div>
-
-        <input
-          type="file"
-          accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-          name="file"
-          onChange={this.onChange}
-        />
-        <small id="emailHelp" class="form-text text-muted">
-          Upload only excel file
-        </small>
 
         {/* <div className="box">
           <input type="file" onChange={this.onFileChange} />
@@ -91,20 +104,7 @@ class endClient extends Component {
                       {/* <span> {new Date(number.date).toLocaleTimeString()}</span> */}
                     </>
                   </td>
-                  <td>
-                    {/* <button
-                      onClick={() => this.onDelete(message)}
-                      className="btn  m-2"
-                    >
-                      <i class="fa fa-paper-plane-o"></i>
-                    </button>
-                    <button
-                      onClick={() => this.onDelete(message)}
-                      className="btn  m-2"
-                    >
-                      <i class="fa fa-trash"></i>
-                    </button> */}
-                  </td>
+                  <td></td>
                 </tr>
               ))}
             </tbody>
