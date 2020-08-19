@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 class Registration extends Validation {
   state = {
     data: {
-      fristName: "",
+      firstName: "",
       lastName: "",
       emailId: "",
       mobileNumber: "",
@@ -20,7 +20,7 @@ class Registration extends Validation {
     errors: {},
   };
   schema = {
-    fristName: Joi.string().required().min(3),
+    firstName: Joi.string().required().min(3),
     lastName: Joi.string().required().min(3),
     emailId: Joi.string(),
     mobileNumber: Joi.number().required().min(10),
@@ -51,15 +51,15 @@ class Registration extends Validation {
             <h3 className="text-center"> My profile</h3>
 
             <TextField
-              name="fristName"
-              label="Frist Name"
+              name="firstName"
+              label="First Name"
               // color="secondary"
               size="small"
               value={data.fristName}
               className=" m-3 col-xl-10 col-10"
               onChange={this.handleChange}
-              helperText={errors.fristName}
-              error={errors.fristName}
+              helperText={errors.firstName}
+              error={errors.firstName}
               required
             />
             <TextField
