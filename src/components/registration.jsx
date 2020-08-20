@@ -59,7 +59,11 @@ class Registration extends Validation {
               className=" m-3 col-xl-10 col-10"
               onChange={this.handleChange}
               helperText={errors.firstName}
+<<<<<<< HEAD
               error={errors.fristName}
+=======
+              error={errors.firstName}
+>>>>>>> 8098e8ba0115c1553d84c848cc3293054166eb96
               required
             />
             <TextField
