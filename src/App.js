@@ -22,6 +22,9 @@ import endClint from "./components/admin/endclient";
 import SendMessage from "./components/sendMessage";
 import Documents from "./components/documents";
 
+import Time from "./components/test";
+
+import List from "./components/common/list";
 // import Nav from "./components/nav";
 // import Otppg from "./components/otppak";
 // import Fb from "./components/firbase";
@@ -47,6 +50,8 @@ class App extends Component {
       <div className="App">
         <ToastContainer />
         <NavBar user={this.state.user} />
+        <Time />
+        <List />
         <Switch>
           <React.Fragment>
             {/* admin */}

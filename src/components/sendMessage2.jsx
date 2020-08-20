@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import * as sendMessageServices from "../services/sendMessageServices";
+import socketIOClient from "socket.io-client";
 
 // import * as usersService from "../../src/services/usersService";
 
@@ -14,8 +15,17 @@ class SendMessage2 extends Component {
   async componentDidMount() {
     const { data: sendMessage } = await sendMessageServices.getmessages();
 
+    const socket = socketIOClient("http://localhost:3900");
+
+    socket.on("ts", (data) => {
+      // this.setState({ response: data });
+      console.log("data3", data);
+    });
+
     this.setState({ sendMessage });
   }
+
+  componentWillUnmount() {}
 
   onSend = async (messageTosend) => {
     // let url = `whatsapp://send?text=whats app messssss&phone=918179600071`;
@@ -26,15 +36,15 @@ class SendMessage2 extends Component {
       `&text=` +
       messageTosend.messageId.message;
 
-    var actualMessages = this.state.sendMessage;
+    // var actualMessages = this.state.sendMessage;
 
     // console.log(messageTosend);
 
-    let filteredMessages = actualMessages.filter(
-      (message) => message._id !== messageTosend._id
-    );
+    // let filteredMessages = actualMessages.filter(
+    //   (message) => message._id !== messageTosend._id
+    // );
 
-    this.setState({ sendMessage: filteredMessages });
+    // this.setState({ sendMessage: filteredMessages });
 
     // let url2 =
     //   "https://web.whatsapp.com/send?phone=" +
@@ -48,13 +58,19 @@ class SendMessage2 extends Component {
 
     // const update = await usersService.updateusers(this.props.user._id);
 
+    // const socket = socketIOClient("http://localhost:3900");
+
+    // socket.on("FromAPI", (data) => {
+    //   console.log({ data });
+    // });
+    // console.log(data);
     const response = await sendMessageServices.deletemessage(messageTosend._id);
-    window.location = url;
-    if (response && response.status === 200) {
-      toast.success(`Successfully deleted .`);
-    } else {
-      this.setState({ sendMessage: actualMessages });
-    }
+    // window.location = url;
+    // if (response && response.status === 200) {
+    //   toast.success(`Successfully deleted .`);
+    // } else {
+    //   this.setState({ sendMessage: actualMessages });
+    // }
   };
 
   render() {

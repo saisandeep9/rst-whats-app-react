@@ -1,18 +1,28 @@
 import React, { Component } from "react";
-// import axios from "axios";
+import axios from "axios";
+import Joi from "joi-browser";
+import Validation from "../common/validation";
 
 import * as clintService from "../../services/endClintServices";
 
-class endClient extends Component {
+class endClient extends Validation {
   state = {
     file: null,
     mobileNumber: [],
+    states: [],
+    state: "",
+  };
+
+  schema = {
+    state: Joi,
   };
 
   async componentDidMount() {
     const { data: mobileNumber } = await clintService.getclients();
 
-    this.setState({ mobileNumber });
+    let { data: items } = await axios.get("http://localhost:3900/api/states");
+    console.log("list", items);
+    this.setState({ mobileNumber, states: items });
   }
 
   onChange = async (e) => {
@@ -47,8 +57,19 @@ class endClient extends Component {
     //   axios.post(URL, formData);
     // };
   };
+
+  doSubmit = async () => {
+    console.log("data", this.state);
+    // const success = await userService.register(this.state.data);
+    // const success = await usersService.createusers(this.state.data);
+    // if (success) {
+    //   // window.location = "/";
+    //   toast.success("Successfully registrade");
+    //   this.props.history.push("/");
+    // }
+  };
   render() {
-    const { mobileNumber } = this.state;
+    const { mobileNumber, states } = this.state;
 
     return (
       <div>
@@ -62,17 +83,29 @@ class endClient extends Component {
               name="file"
               onChange={this.onChange}
             />
-            <small id="emailHelp" class="form-text text-muted">
+            <small id="emailHelp" className="form-text text-muted">
               Upload only excel file
             </small>
-            <lu>
-              <p class="h6 text-muted">
+            <ul>
+              <p className="h6 text-muted">
                 <li>Mobile Numbers should be in `A` column and first Sheet</li>
               </p>
-              <p class="h6 text-muted">
+              <p className="h6 text-muted">
                 <li>sheet name must me "Sheet1"</li>
               </p>
-            </lu>
+            </ul>
+
+            <select name="states">
+              {states.map((state) => (
+                <option
+                  key={state._id}
+                  value={state.name}
+                  onChange={this.handleChange}
+                >
+                  {state.stateName}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="col-md-3 ml-1 ">
             <img
