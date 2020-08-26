@@ -50,8 +50,8 @@ class App extends Component {
       <div className="App">
         <ToastContainer />
         <NavBar user={this.state.user} />
-        <Time />
-        <List />
+        {/* <Time /> */}
+        {/* <List /> */}
         <Switch>
           <React.Fragment>
             {/* admin */}
